@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/KUBION_web/', // 리포지토리명
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,4 +12,3 @@ export default defineConfig({
     },
   },
 })
-
