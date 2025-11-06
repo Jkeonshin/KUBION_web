@@ -6,6 +6,11 @@ import { Separator } from "./ui/separator";
 import { Checkbox } from "./ui/checkbox";
 import { Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
+import { supabase } from "../supabaseClient";
+
+
+
+
 
 export default function LoginPage() {
   const handleBack = () => {
@@ -108,6 +113,14 @@ export default function LoginPage() {
                 <Button 
                   variant="outline"
                   className="w-full h-12 border-gray-200 hover:bg-gray-50 hover:border-gray-300 rounded-xl transition-all duration-300"
+                  onClick={() => {
+                    supabase.auth.signInWithOAuth({
+                      provider: "google",
+                      options: {
+                        redirectTo: `${window.location.origin}/KUBION_web/`,
+                      }
+                    });
+                  }}
                 >
                   <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                     <path fill="#EA4335" d="M5.26620003,9.76452941 C6.19878754,6.93863203 8.85444915,4.90909091 12,4.90909091 C13.6909091,4.90909091 15.2181818,5.50909091 16.4181818,6.49090909 L19.9090909,3 C17.7818182,1.14545455 15.0545455,0 12,0 C7.27006974,0 3.1977497,2.69829785 1.23999023,6.65002441 L5.26620003,9.76452941 Z"/>
